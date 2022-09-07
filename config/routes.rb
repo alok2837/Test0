@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  resources :posts do
+    resources :likes
+  end
   
   root "pages#home"
   get 'about', to: 'pages#about'

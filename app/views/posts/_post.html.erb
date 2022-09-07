@@ -2,6 +2,15 @@
   <h2><%= post.title %></h2>
   <h4>posted by <%= link_to post.user.name, user_path(post.user) %></h4>
   <h6><%= pluralize(post.views, "view") %></h6>
+
+  <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to '👎', post_like_path(post, pre_like), method: :delete %>
+  <% else %>
+    <%= button_to '👍', post_likes_path(post), method: :post %>
+  <% end %>
+  
+  <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
   <div>
       <%= post.body %>
     </div>
