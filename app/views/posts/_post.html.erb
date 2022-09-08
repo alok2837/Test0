@@ -5,12 +5,21 @@
 
   <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
   <% if pre_like %>
-    <%= button_to '👎', post_like_path(post, pre_like), method: :delete %>
+    <%= button_to '👎', post_like_path(post, pre_like), class:"btn ", method: :delete %>
   <% else %>
-    <%= button_to '👍', post_likes_path(post), method: :post %>
+    <%= button_to '👍', post_likes_path(post), class:"btn ", method: :post %>
   <% end %>
-  
   <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+
+  <% pre_favorite = post.favorites.find { |favorite| favorite.user_id == current_user.id} %>
+  <% if pre_favorite %>
+    <%= button_to '😡', post_favorite_path(post, pre_favorite), class:"btn ", method: :delete %>
+  <% else %>
+    <%= button_to '❤️', post_favorites_path(post), class:"btn ", method: :post %>
+  <% end %>
+  <p><%= post.favorites.count %> <%= (post.favorites.count) == 1 ? 'Favorite' : 'Favorites'%></p>
+
   <div>
       <%= post.body %>
     </div>
