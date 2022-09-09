@@ -1,12 +1,14 @@
 <div class="container">
-  <h1>Posts</h1>
+<br>
+  <h1 style="color:green">All Posts</h1>
+  <br>
   <div id="posts">
     <% @posts.each do |post| %>
       <%= render post %>
+      <br>
       <p>
-        <%= link_to "Show this post", post %>
+        <%= link_to "Show this post", post ,class:"btn btn-primary"%>
       </p>
     <% end %>
   </div>
-  <%= link_to "New post", new_post_path %>
 </div>

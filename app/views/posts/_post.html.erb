@@ -1,6 +1,9 @@
 <div id="<%= dom_id post %>">
-  <h2><%= post.title %></h2>
-  <h4>posted by <%= link_to post.user.name, user_path(post.user) %></h4>
+  <h3><%= post.title %></h3>
+    <div>
+    <p> <%= post.body %> </p>
+    </div> 
+  <h5>posted by <%= link_to post.user.name, user_path(post.user) %></h5>
   <h6><%= pluralize(post.views, "view") %></h6>
 
   <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
@@ -20,7 +23,4 @@
   <% end %>
   <p><%= post.favorites.count %> <%= (post.favorites.count) == 1 ? 'Favorite' : 'Favorites'%></p>
 
-  <div>
-      <%= post.body %>
-    </div>
 </div>
